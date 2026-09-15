@@ -31,4 +31,4 @@ $skill-installer 从 GitHub 安装 TopVitamin/agent-skills 中的 skills/vitamin
 
 ## 许可证
 
-本仓库的开源许可证待维护者确认后补充。
+本仓库采用 [MIT License](LICENSE)。
