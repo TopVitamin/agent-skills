@@ -1,0 +1,4 @@
+interface:
+  display_name: "老系统 UI 克隆"
+  short_description: "老系统/竞品后台证据采集、静态/高保真还原、视觉验收与 design-system 沉淀"
+  default_prompt: "使用 $old-system-ui-clone 克隆老系统页面。请先判断 greenfield、incremental、screenshot-only、evidence-only 或 QA iteration，再按对应路径执行，不需要我报 Phase。"

@@ -7,6 +7,7 @@ TopVitamin 面向 Codex 和其他兼容 Agent Skills 标准的工具，整理可
 | Skill | 用途 | 安装路径 |
 | --- | --- | --- |
 | `vitamin-prototype-annotation` | 为 HTML、React、Vue 等前端原型添加低侵入的业务逻辑标注 | `skills/vitamin-prototype-annotation` |
+| `old-system-ui-clone` | 基于 DOM/CDP 证据复刻老系统、竞品后台和企业管理页面，并完成 Page Map、交互与视觉 QA | `skills/old-system-ui-clone` |
 
 ## 安装
 
@@ -17,6 +18,8 @@ $skill-installer 从 GitHub 安装 TopVitamin/agent-skills 中的 skills/vitamin
 ```
 
 也可以指定某个 Git ref，以固定安装版本。
+
+`old-system-ui-clone` 需要浏览器/CDP 能力；公开 URL 或本地页面可使用 Playwright，登录态页面需要可访问用户会话的 Chrome/CDP 路径。Python 辅助脚本的依赖见该 Skill 内的 `scripts/requirements.txt`。
 
 ## 目录约定
 
