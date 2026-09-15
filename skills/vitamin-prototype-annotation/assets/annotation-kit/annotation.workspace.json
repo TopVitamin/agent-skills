@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "title": "Prototype Annotations",
+  "inputs": [
+    {
+      "scope": "product",
+      "config": "./product/annotation.config.json",
+      "order": 1
+    },
+    {
+      "scope": "purchase",
+      "config": "./purchase/annotation.config.json",
+      "order": 2
+    }
+  ],
+  "runtime": {
+    "zIndexBase": 2147480000,
+    "initialMode": "preview",
+    "layout": "drawer"
+  },
+  "output": "../../public/annotation-kit/annotation.bundle.json",
+  "coverage": "./coverage.md",
+  "htmlOutput": "./annotations.html"
+}

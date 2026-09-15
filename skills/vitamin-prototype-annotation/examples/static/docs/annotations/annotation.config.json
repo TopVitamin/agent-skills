@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "scope": "demo",
+  "title": "商品业务标注",
+  "sourceBase": ".",
+  "output": "../../annotation-kit/annotation.bundle.json",
+  "coverage": "coverage.md",
+  "runtime": {
+    "initialMode": "preview",
+    "zIndexBase": 2147480000,
+    "viewScopeLabels": {
+      "list": "商品列表",
+      "create": "新增商品"
+    }
+  },
+  "sourceRequirements": [
+    {
+      "id": "REQ-SHARED",
+      "source": "../prd.md#共享范围"
+    },
+    {
+      "id": "REQ-LIST",
+      "source": "../prd.md#列表查询"
+    },
+    {
+      "id": "REQ-CREATE",
+      "source": "../prd.md#新增草稿"
+    },
+    {
+      "id": "REQ-HELP",
+      "source": "../prd.md#导出说明"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "shared",
+      "type": "global",
+      "page": "*",
+      "moduleName": "演示范围",
+      "markdownFile": "page.md",
+      "sourceRefs": [
+        "REQ-SHARED"
+      ],
+      "order": 0
+    },
+    {
+      "id": "list-rules",
+      "type": "page-global",
+      "page": "*",
+      "moduleName": "列表页规则",
+      "markdownFile": "page.md",
+      "sourceRefs": [
+        "REQ-LIST"
+      ],
+      "order": 1,
+      "viewScope": [
+        "list"
+      ]
+    },
+    {
+      "id": "table",
+      "type": "element",
+      "page": "*",
+      "moduleName": "商品列表与查询",
+      "markdownFile": "page.md",
+      "sourceRefs": [
+        "REQ-LIST"
+      ],
+      "order": 2,
+      "viewScope": [
+        "list"
+      ],
+      "target": {
+        "selector": "[data-anno=\"product-table\"]"
+      }
+    },
+    {
+      "id": "create-rules",
+      "type": "page-global",
+      "page": "*",
+      "moduleName": "新增页规则",
+      "markdownFile": "page.md",
+      "sourceRefs": [
+        "REQ-CREATE"
+      ],
+      "order": 3,
+      "viewScope": [
+        "create"
+      ]
+    },
+    {
+      "id": "form",
+      "type": "element",
+      "page": "*",
+      "moduleName": "商品名称",
+      "markdownFile": "page.md",
+      "sourceRefs": [
+        "REQ-CREATE"
+      ],
+      "order": 4,
+      "viewScope": [
+        "create"
+      ],
+      "target": {
+        "selector": "[data-anno=\"product-form\"]"
+      }
+    },
+    {
+      "id": "help",
+      "type": "element",
+      "page": "*",
+      "moduleName": "导出说明",
+      "markdownFile": "page.md",
+      "sourceRefs": [
+        "REQ-HELP"
+      ],
+      "order": 5,
+      "target": {
+        "selector": "[data-anno=\"export-help\"]"
+      }
+    }
+  ]
+}

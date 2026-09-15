@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>原型标注接入示例</title>
+<style>
+body{margin:0;background:#f6f7f9;color:#243347;font:15px/1.6 system-ui}main{max-width:960px;margin:40px auto;padding:0 24px}section{background:white;padding:24px;border:1px solid #e1e5eb;border-radius:8px;margin:20px 0}button,input{font:inherit;padding:8px 12px;border:1px solid #bec8d4;border-radius:4px;background:white}button{cursor:pointer}nav{display:flex;gap:12px}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px;border-bottom:1px solid #eee}.muted{color:#65768b}label{display:block;margin:12px 0}[hidden]{display:none!important}.modal{position:fixed;inset:15% 20%;z-index:100;background:#fff;padding:24px;box-shadow:0 0 0 100vmax #0005}.status{color:#117c59} @media(max-width:600px){main{margin:16px auto;padding:0 16px}.modal{inset:15% 8%}}
+</style></head>
+<body data-vpa-view="list">
+<main id="business-app">
+<h1>商品原型 · 标注接入示例</h1><p class="muted">虚构演示，用于验证标注工具；不代表其他项目的业务规则。</p>
+<nav><button id="go-list">商品列表</button><button id="go-create">新增商品</button><button id="show-help">导出说明</button></nav>
+<section id="list-view" data-anno="product-table"><h2>商品列表</h2><label>名称 <input id="query" placeholder="输入演示商品名称"></label><button id="query-button">查询</button><button id="reset-button">重置</button><table><thead><tr><th>商品编码</th><th>名称</th><th>状态</th></tr></thead><tbody id="rows"></tbody></table></section>
+<section id="create-view" data-anno="product-form" hidden><h2>新增商品</h2><form id="product-form"><label>名称 <input id="product-name" required maxlength="20"></label><button type="submit">保存草稿</button><p id="save-result" role="status"></p></form></section>
+</main>
+<div class="modal" data-anno="export-help" hidden><h2>演示导出说明</h2><p>本示例不实际导出业务数据。</p><button id="close-help">关闭说明</button></div>
+<script>
+// Deliberately common host names: the annotation runtime must not collide.
+const renderMarkdown = text => text;
+const renderToolbar = () => 'host toolbar';
+const boot = () => 'host boot';
+const products = [{code:'DEMO-001',name:'示例商品',status:'草稿'}];
+function drawRows(){const query=document.querySelector('#query').value;const rows=document.querySelector('#rows');rows.replaceChildren();for(const product of products.filter(p=>p.name.includes(query))){const tr=document.createElement('tr');for(const value of [product.code,product.name,product.status]){const td=document.createElement('td');td.textContent=value;tr.append(td)}rows.append(tr)}}
+function view(name){document.body.dataset.vpaView=name;document.querySelector('#list-view').hidden=name!=='list';document.querySelector('#create-view').hidden=name!=='create';window.VitaminAnnotations?.sync()}
+document.querySelector('#go-list').onclick=()=>view('list');document.querySelector('#go-create').onclick=()=>view('create');
+document.querySelector('#query-button').onclick=drawRows;document.querySelector('#reset-button').onclick=()=>{document.querySelector('#query').value='';drawRows()};
+document.querySelector('#show-help').onclick=()=>document.querySelector('.modal').hidden=false;document.querySelector('#close-help').onclick=()=>document.querySelector('.modal').hidden=true;
+document.querySelector('#product-form').onsubmit=e=>{e.preventDefault();document.querySelector('#save-result').textContent='演示保存成功，保持草稿；未调用后端。'};
+drawRows();
+</script>
+</body></html>

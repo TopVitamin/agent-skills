@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Vitamin Prototype Annotation Config",
+  "type": "object",
+  "required": [
+    "version",
+    "annotations"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "title": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string",
+      "pattern": "^$|^[a-z0-9][a-z0-9-]*$"
+    },
+    "sourceBase": {
+      "type": "string"
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "zIndexBase": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483000
+        },
+        "initialMode": {
+          "type": "string",
+          "enum": [
+            "preview",
+            "annotate"
+          ]
+        },
+        "layout": {
+          "type": "string",
+          "enum": [
+            "drawer",
+            "floating"
+          ]
+        },
+        "viewScopeLabels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "drawerWidth": {
+          "type": "number",
+          "minimum": 280,
+          "maximum": 1600
+        },
+        "hideToolbarWhenEmpty": {
+          "type": "boolean",
+          "description": "当前页面没有匹配标注时隐藏工具栏与贴边样式，默认 true"
+        }
+      }
+    },
+    "sourceRequirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "source"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "page": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "moduleName"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "element",
+              "global",
+              "page-global"
+            ]
+          },
+          "page": {
+            "type": "string"
+          },
+          "routeMatcher": {
+            "type": "string"
+          },
+          "moduleName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "element",
+                  "global",
+                  "page-global"
+                ]
+              },
+              "selector": {
+                "type": "string"
+              },
+              "fallbackSelectors": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "activationHint": {
+                "type": "string"
+              }
+            }
+          },
+          "markdownFile": {
+            "type": "string"
+          },
+          "blockId": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "markdown": {
+            "type": "string"
+          },
+          "sourceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "order": {
+            "type": "number"
+          },
+          "viewScope": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "SPA 原型视图范围，如 list/create/edit/detail；省略或 [\"*\"] 表示不限"
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "mermaid": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "src": {
+          "type": "string"
+        },
+        "options": {
+          "type": "object"
+        }
+      }
+    },
+    "output": {
+      "type": "string"
+    },
+    "coverage": {
+      "type": "string"
+    },
+    "htmlOutput": {
+      "type": "string"
+    }
+  }
+}

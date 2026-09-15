@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "title": "原型业务标注",
+  "scope": "example",
+  "sourceBase": ".",
+  "runtime": {
+    "zIndexBase": 2147480000,
+    "initialMode": "preview",
+    "layout": "drawer",
+    "drawerWidth": 480
+  },
+  "mermaid": {
+    "enabled": true,
+    "src": "",
+    "options": {}
+  },
+  "sourceRequirements": [],
+  "annotations": [
+    {
+      "id": "page-rules",
+      "type": "page-global",
+      "page": "*",
+      "moduleName": "本页规则",
+      "markdownFile": "annotation.example.md",
+      "blockId": "page-rules"
+    },
+    {
+      "id": "example",
+      "type": "element",
+      "page": "*",
+      "moduleName": "示例区域",
+      "target": {
+        "selector": "[data-anno='example-module']"
+      },
+      "markdownFile": "annotation.example.md",
+      "blockId": "example"
+    }
+  ]
+}

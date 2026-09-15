@@ -1,0 +1,6 @@
+interface:
+  display_name: "Vitamin Prototype Annotation"
+  short_description: "Low-intrusion prototype annotation workflow"
+  default_prompt: "Use $vitamin-prototype-annotation to add low-intrusion product-logic annotations to an existing prototype."
+policy:
+  allow_implicit_invocation: true
