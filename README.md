@@ -6,6 +6,7 @@ TopVitamin 面向 Codex 和其他兼容 Agent Skills 标准的工具，整理可
 
 | Skill | 用途 | 安装路径 |
 | --- | --- | --- |
+| `pm-weekly-report` | 将产品经理的碎片工作记录整理成周报、周总结和下周计划，或润色已有周报 | `skills/pm-weekly-report` |
 | `vitamin-prototype-annotation` | 为 HTML、React、Vue 等前端原型添加低侵入的业务逻辑标注 | `skills/vitamin-prototype-annotation` |
 | `old-system-ui-clone` | 基于 DOM/CDP 证据复刻老系统、竞品后台和企业管理页面，并完成 Page Map、交互与视觉 QA | `skills/old-system-ui-clone` |
 
@@ -16,6 +17,8 @@ TopVitamin 面向 Codex 和其他兼容 Agent Skills 标准的工具，整理可
 ```text
 $skill-installer 从 GitHub 安装 TopVitamin/agent-skills 中的 skills/vitamin-prototype-annotation
 ```
+
+安装周报 Skill 时，将目标路径改为 `skills/pm-weekly-report`。
 
 也可以指定某个 Git ref，以固定安装版本。
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "产品经理周报助手"
+  short_description: "整理碎片工作记录、提炼总结与计划，支持先确认后成稿或润色已有周报"
+  default_prompt: "请使用 $pm-weekly-report 整理我的本周工作记录，先澄清缺口，再单独与我确认项目划分、关键点和顺序，确认后再写周报。"
